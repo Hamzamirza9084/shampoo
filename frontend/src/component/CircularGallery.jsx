@@ -413,6 +413,11 @@ class App {
     }
   }
   update() {
+    // Constant slow movement when not dragging
+    if (!this.isDown) {
+      this.scroll.target += 0.08; // Adjust this value for slow auto-scrolling
+    }
+
     this.scroll.current = lerp(this.scroll.current, this.scroll.target, this.scroll.ease);
     const direction = this.scroll.current > this.scroll.last ? 'right' : 'left';
     if (this.medias) {
