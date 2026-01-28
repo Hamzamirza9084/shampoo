@@ -1,12 +1,14 @@
 import { useState } from 'react'
 import "./App.css"
 import DarkVeil from './component/DarkVeil'
-import CircularGallery from './component/CircularGallery' //
+import CircularGallery from './component/CircularGallery'
+import Header from './component/Header' 
+import Footer from './component/Footer' 
 
 function App() {
   return (
     <>
-      {/* 1. Background Layer */}
+      {/* 1. Background Layer: Fixed to the viewport and placed behind everything */}
       <div style={{ 
         width: '100vw', 
         height: '100vh', 
@@ -17,25 +19,29 @@ function App() {
       }}>
         <DarkVeil
           hueShift={0}
-          noiseIntensity={0}
-          scanlineIntensity={0}
+          noiseIntensity={0.02} 
+          scanlineIntensity={0.1}
           speed={0.5}
-          scanlineFrequency={0}
-          warpAmount={0}
+          scanlineFrequency={2}
+          warpAmount={0.1}
         />
       </div>
 
-      {/* 2. Content Layer (Circular Gallery) */}
-      <div style={{ 
+      {/* 2. Navigation Layer: Stays on top of the background */}
+      <Header />
+
+      {/* 3. Content Layer: Centered main gallery area */}
+      <main style={{ 
         height: '100vh', 
         width: '100vw', 
         position: 'relative', 
         zIndex: 1,
         display: 'flex',
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        overflow: 'hidden'
       }}>
-        <div style={{ height: '600px', width: '100%', position: 'relative' }}>
+        <div style={{ height: '500px', width: '100%', position: 'relative' }}>
           <CircularGallery 
             bend={3} 
             textColor="#ffffff" 
@@ -43,7 +49,10 @@ function App() {
             scrollEase={0.02} 
           />
         </div>
-      </div>
+      </main>
+
+      {/* 4. Information Layer: Persistent footer */}
+      <Footer />
     </>
   )
 }

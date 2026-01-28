@@ -26,11 +26,10 @@ body {
   margin: 0;
   padding: 0;
   width: 100%;
-  min-height: 100vh;
-  /* Remove display: flex and place-items: center if you want 
-     standard page scrolling rather than a centered app box */
+  height: 100vh;
+  overflow: hidden; /* Prevents background from shifting */
+  background-color: #000;
 }
-
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
