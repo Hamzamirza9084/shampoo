@@ -1,15 +1,15 @@
-import { useState } from 'react'
-import "./App.css"
-import DarkVeil from './component/DarkVeil'
-import CircularGallery from './component/CircularGallery'
-import Header from './component/Header' 
-import Footer from './component/Footer' 
-import Login from './Login/Login'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import "./App.css";
+import DarkVeil from './component/DarkVeil';
+import CircularGallery from './component/CircularGallery';
+import Header from './component/Header'; 
+import Footer from './component/Footer'; 
+import Login from './Login/Login';
 
 function App() {
   return (
-    <>
-      {/* 1. Background Layer: Fixed to the viewport and placed behind everything */}
+    <Router>
+      {/* 1. Shared Background Layer: Persists across all routes */}
       <div style={{ 
         width: '100vw', 
         height: '100vh', 
@@ -28,35 +28,49 @@ function App() {
         />
       </div>
 
-      {/* 2. Navigation Layer: Stays on top of the background */}
-      <Header />
+      <Routes>
+        {/* Landing Route */}
+        <Route path="/" element={
+          <>
+            <Header />
+            <main style={{ 
+              height: '100vh', 
+              width: '100vw', 
+              position: 'relative', 
+              zIndex: 1,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              overflow: 'hidden'
+            }}>
+              <div style={{ height: '500px', width: '100%', position: 'relative' }}>
+                <CircularGallery 
+                  bend={3} 
+                  textColor="#ffffff" 
+                  borderRadius={0.05} 
+                  scrollEase={0.02} 
+                />
+              </div>
+            </main>
+            <Footer />
+          </>
+        } />
 
-      {/* 3. Content Layer: Centered main gallery area */}
-      <main style={{ 
-        height: '100vh', 
-        width: '100vw', 
-        position: 'relative', 
-        zIndex: 1,
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        overflow: 'hidden'
-      }}>
-        <div style={{ height: '500px', width: '100%', position: 'relative' }}>
-          <CircularGallery 
-            bend={3} 
-            textColor="#ffffff" 
-            borderRadius={0.05} 
-            scrollEase={0.02} 
-          />
-        </div>
-      </main>
-      
-      {/* 4. Information Layer: Persistent footer */}
-      <Footer />
-      
-    </>
-  )
+        {/* Login Route */}
+        <Route path="/login" element={
+          <div style={{
+            height: '100vh',
+            width: '100vw',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center'
+          }}>
+            <Login />
+          </div>
+        } />
+      </Routes>
+    </Router>
+  );
 }
 
-export default App
+export default App;
