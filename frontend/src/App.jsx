@@ -21,7 +21,7 @@ function App() {
           hueShift={0}
           noiseIntensity={0.02} 
           scanlineIntensity={0.1}
-          speed={0.5}
+          speed={1.3}
           scanlineFrequency={2}
           warpAmount={0.1}
         />
