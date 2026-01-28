@@ -35,7 +35,7 @@ const Header = () => {
           margin: 0, 
           padding: 0 
         }}>
-          {['Gallery', 'About', 'Contact'].map((item) => (
+          {['Gallery', 'About', 'Contact',].map((item) => (
             <li key={item}>
               <a href={`#${item.toLowerCase()}`} style={{
                 color: 'rgba(255, 255, 255, 0.7)',

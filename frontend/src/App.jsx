@@ -4,6 +4,7 @@ import DarkVeil from './component/DarkVeil'
 import CircularGallery from './component/CircularGallery'
 import Header from './component/Header' 
 import Footer from './component/Footer' 
+import Login from './Login/Login'
 
 function App() {
   return (
@@ -50,9 +51,10 @@ function App() {
           />
         </div>
       </main>
-
+      
       {/* 4. Information Layer: Persistent footer */}
       <Footer />
+      
     </>
   )
 }
